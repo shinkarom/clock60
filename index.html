@@ -9,9 +9,11 @@
 	<link rel="stylesheet" href="sakura.css">
 	<link rel="stylesheet" href="styles.css">
 	<style>
-	#datetime {
+	.datetime {
 		text-align: center;
 		font-family: monospace;
+		background-color: silver;
+		padding: 0.5em;
 	}
 	</style>
 	<script src="script.js"></script>
@@ -23,9 +25,15 @@
   <nav>
   </nav>
   <main>
-	<div>
-	<pre><h2 id="datetime"></h2></pre>
-	</div>
+	<section>
+	 <h2 class="datetime" id="current"></h2>
+	</section>
+	<section>
+	 <input type="date" id="date" value="2000-01-01">
+	 <input type="time" id="time" step="1" value="12:00:00">
+	 <span> = </span>
+	 <span class="datetime" id="custom">XcBJAkz</span>
+	</section>
   </main>
   <footer>
 	<small><p>Made in 2018 by <a href="https://github.com/shinkarom">Shinkarom</a> with the help of <a href="https://necolas.github.io/normalize.css/">normalize.css</a> and <a href="https://oxal.org/projects/sakura/">sakura</a>. Licensed <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GPL 3.0</a>.</p></small>

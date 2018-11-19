@@ -2,7 +2,10 @@ var alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwx';
 
 function bodyLoad(){
 	showDateTime();
-	var timer = setInterval(showDateTime,500);
+	var timer = setInterval(showDateTime,1000);
+	customDateTime();
+	document.querySelector("#date").addEventListener('input',customDateTime);
+	document.querySelector("#time").addEventListener('input',customDateTime);
 }
 
 function toBase60(num){
@@ -15,17 +18,25 @@ function toBase60(num){
 }
 
 function showDateTime(){
-	document.querySelector('#datetime').innerText = convertDateTime();
+	document.querySelector('#current').innerText = convertDateTime(new Date());
 }
 
-function convertDateTime(){
-	var dt = new Date();
+function customDateTime(){
+	var dt = new Date(document.querySelector('#date').value);
+	var ts = document.querySelector('#time').value.split(':');
+	dt.setHours(ts[0]);
+	dt.setMinutes(ts[1]);
+	dt.setSeconds(ts[2]);
+	document.querySelector('#custom').innerText = convertDateTime(dt);
+}
+
+function convertDateTime(dtm){
 	var res='';
-	res+=toBase60(dt.getFullYear());
-	res+=toBase60(dt.getMonth()+1);
-	res+=toBase60(dt.getDate());
-	res+=toBase60(dt.getHours());
-	res+=toBase60(dt.getMinutes());
-	res+=toBase60(dt.getSeconds());
+	res+=toBase60(dtm.getFullYear());
+	res+=toBase60(dtm.getMonth()+1);
+	res+=toBase60(dtm.getDate());
+	res+=toBase60(dtm.getHours());
+	res+=toBase60(dtm.getMinutes());
+	res+=toBase60(dtm.getSeconds());
 	return res;
 }
