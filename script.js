@@ -2,7 +2,7 @@ var alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwx';
 
 function bodyLoad(){
 	showDateTime();
-	var timer = setInterval(showDateTime,1000);
+	var timer = setInterval(showDateTime,500);
 	customDateTime();
 	document.querySelector("#date").addEventListener('input',customDateTime);
 	document.querySelector("#time").addEventListener('input',customDateTime);
